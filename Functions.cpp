@@ -10,8 +10,6 @@ using namespace std;
 
 // name says it all, grabs a couple random ints for the card # and suit, and adds it to the 2d
 //      array of the corresponding hand
-// got to be a better way to get a random varaible that doesn't require the sleep time to get a different
-//      time seed
 void add_card_hand(int which_hand[3][10]) {
     random_device rd;
     mt19937 gen(rd());
