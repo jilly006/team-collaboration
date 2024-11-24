@@ -5,7 +5,7 @@
 #include <ctime>
 #include <string>
 #include <windows.h>
-#include <stdlib.h>
+#include <random>
 using namespace std;
 
 // name says it all, grabs a couple random ints for the card # and suit, and adds it to the 2d
@@ -13,23 +13,21 @@ using namespace std;
 // got to be a better way to get a random varaible that doesn't require the sleep time to get a different
 //      time seed
 void add_card_hand(int which_hand[3][10]) {
-    srand((unsigned) time(NULL));
-    int rand_card = 2 + (rand() % 10);
-    Sleep(800); // Slows down so that the same numbers aren't generated from the time
-    int rand_suit = rand() % 4;
-    Sleep(800); // 800 Seems to be the lowest value to get a new random value
+    random_device rd;
+    mt19937 gen(rd());
+
+    uniform_int_distribution<int> distribution(0, 3);
+    uniform_int_distribution<int> distribution2(2, 11);
+    int rand_card = distribution2(gen);
+    Sleep(100);
+    int rand_suit = distribution(gen);
+    Sleep(100);
     for (int i = 0; i < 10; i++) {
         if (which_hand[0][i] == 1 & which_hand[0][i+1] == 0) {
             which_hand[1][i] = rand_card;
             which_hand[2][i] = rand_suit;
             which_hand[0][i] = 2, which_hand[0][i+1] = 1;
             i = 10;
-            //This was all just to test shit as i kept fucking it up
-            //cout << "rand card " << rand_card << endl;
-            //cout << "suit " << rand_suit << endl;
-            //for (int j = 0; j < 3; j++) {
-            //    cout << which_hand[j][i] << endl;
-            //}
         }
     }
 }
@@ -37,16 +35,17 @@ void add_card_hand(int which_hand[3][10]) {
 void print_hand(int which_hand[3][10], string card_suit[], string card[5][1]) {
     int sum_of_hand = 0, num_of_cards = 0;
     // This for loop counts the number of cards in a hand and scores it
-    // maybe move the score to another function that also keeps track of betting and other things?
+    //      maybe move the score to another function that also keeps track
+    //      of betting and other things?
     for (int i = 0; i < 10; i++) {
         if (which_hand[0][i] == 2) {
             num_of_cards++;
             sum_of_hand += which_hand[1][i];
         }
     }
-    //cout << num_of_cards << endl; // just to test shit
 
-    //This next chunk bit prints out all the cards currently in a hand going one row at a time
+    //This next chunk bit prints out all the cards currently in a hand
+    //      going one row at a time
     for (int i = 0; i < num_of_cards; i++) {
         cout << card[0][0];
     }
@@ -86,7 +85,7 @@ void print_hand(int which_hand[3][10], string card_suit[], string card[5][1]) {
     cout << endl;
 }
 
-// propogates the hands of all players initially to start a new game or rounds
+// propogates the hands of all players initially to start a new game or round
 void start_game(int num_players,int dealer_hand[3][10], int player1_hand[3][10], int player2_hand[3][10], int player3_hand[3][10], string card_suit[], string card[5][1]) {
     if (num_players >= 1) {
         add_card_hand(dealer_hand);
@@ -104,7 +103,7 @@ void start_game(int num_players,int dealer_hand[3][10], int player1_hand[3][10],
     }
 }
 
-// clears the console and updates all of the hands in the game
+// clears the console and updates all the hands in the game
 void update_game_status (int num_players,int dealer_hand[3][10], int player1_hand[3][10], int player2_hand[3][10], int player3_hand[3][10], string card_suit[], string card[5][1]) {
     system("cls");
     if (num_players >= 1) {

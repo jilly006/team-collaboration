@@ -4,8 +4,8 @@
 #include <string>
 using namespace std;
 
-//int number[] = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}; // Dont think this is needed
 string card_suit[] = { "Heart", "Diamond", "Spade", "Club"};
+string player_names[] = {"Dealer", "Player1", "Player2", "Player3"};
 
 string card[5][1]={
     {" ______  "},
@@ -53,8 +53,8 @@ int player3_hand[3][10] = {
 
 // Haven't tried or integrated anything to do with this yet
 int player_scores[4][10] = {
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, // Active or not? (1 - 2)
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, // player? (0 = dealer, 1-9 players
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, // Active or not? (0 inactive, 1 active)
     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, // Amount of money?
+    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, // Active Bets
     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0} // Games won
 };
