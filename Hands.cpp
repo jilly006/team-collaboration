@@ -26,7 +26,7 @@ string card[5][1]={
 int dealer_hand[3][10] = {
     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, // tracks if there is a card in this column
     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, // Card number
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0} // Card Suit
+    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0} // Card Suit number which is used to find suit in the Card_suit array above
 };
 
 int player1_hand[3][10] = {

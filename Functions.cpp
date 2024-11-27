@@ -117,5 +117,7 @@ void update_game_status (int num_players,int dealer_hand[3][10], int player1_han
     }
 }
 
+/*void clear_game(int &some_player_hand, int control_hand) {
+    for (int i = 0; i < 10)
+}*/
 
-//void clear_game() // would be to reset all the hands for a new game or round

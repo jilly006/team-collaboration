@@ -12,12 +12,12 @@ int main() {
 
     // could add names to each player
     do {
-        cout << "Home many people would like to play (1 to 3)? : ";
+        cout << "Home many people would like to play" << "\n" << "(enter a number 1 to 3)? : ";
         cin >> num_players;
         if (num_players == 0 or num_players > 3) {
             if (num_players == 0) {
                 system("cls");
-                cout << "The dealer can't play by himself, you need atleast one player." << endl << endl;
+                cout << "The dealer can't play by himself, you need at least one player." << endl << endl;
             }
             else {
                 system("cls");
@@ -56,7 +56,6 @@ int main() {
                 update_game_status (num_players, dealer_hand, player1_hand, player2_hand, player3_hand, card_suit, card);
             }
         } while (draw_dec == 'y');
-
     }
 }
 
