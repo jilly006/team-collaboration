@@ -4,8 +4,7 @@
 #include <random>
 #include <ctime>
 #include <string>
-#include <windows.h>
-#include <random>
+//#include <random>
 using namespace std;
 
 // name says it all, grabs a couple random ints for the card # and suit, and adds it to the 2d
@@ -17,9 +16,7 @@ void add_card_hand(int which_hand[3][10]) {
     uniform_int_distribution<int> distribution(0, 3);
     uniform_int_distribution<int> distribution2(2, 11);
     int rand_card = distribution2(gen);
-    Sleep(100);
     int rand_suit = distribution(gen);
-    Sleep(100);
     for (int i = 0; i < 10; i++) {
         if (which_hand[0][i] == 1 & which_hand[0][i+1] == 0) {
             which_hand[1][i] = rand_card;
@@ -42,7 +39,7 @@ void print_hand(int which_hand[3][10], string card_suit[], string card[5][1]) {
         }
     }
 
-    //This next chunk bit prints out all the cards currently in a hand
+    // This next chunk bit prints out all the cards currently in a hand
     //      going one row at a time
     for (int i = 0; i < num_of_cards; i++) {
         cout << card[0][0];
