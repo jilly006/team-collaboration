@@ -100,7 +100,7 @@ void start_game(int num_players,int dealer_hand[3][10], int player1_hand[3][10],
 
 // clears the console and updates all the hands in the game
 void update_game_status (int num_players,int dealer_hand[3][10], int player1_hand[3][10], int player2_hand[3][10], int player3_hand[3][10], string card_suit[], string card[5][1]) {
-    system("cls");
+    system("clear");
     if (num_players >= 1) {
         cout << "Dealer:" << endl;
         print_hand(dealer_hand, card_suit, card);
