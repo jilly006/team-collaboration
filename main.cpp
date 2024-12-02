@@ -16,16 +16,16 @@ int main() {
         cin >> num_players;
         if (num_players == 0 or num_players > 3) {
             if (num_players == 0) {
-                system("cls");
+                system("clear");
                 cout << "The dealer can't play by himself, you need at least one player." << endl << endl;
             }
             else {
-                system("cls");
+                system("clear");
                 cout << "Lets not get crazy, pick a maximum of 3." << endl << endl;
             }
         }
         else if (num_players > 0 and num_players < 4) {
-            system("cls");
+            system("clear");
             cout << "Lets Play BlackJack!!!" << endl << endl;
         }
         else {
