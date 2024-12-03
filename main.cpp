@@ -17,18 +17,18 @@ int main() {
         if (num_players == 0 or num_players > 3) {
             if (num_players == 0) {
                 //system("cls");
-                system(clear);
+                system("clear");
                 cout << "The dealer can't play by himself, you need at least one player." << endl << endl;
             }
             else {
                 //system("cls");
-                system(clear);
+                system("clear");
                 cout << "Lets not get crazy, pick a maximum of 3." << endl << endl;
             }
         }
         else if (num_players > 0 and num_players < 4) {
             //system("cls");
-            system(clear);
+            system("clear");
             cout << "Lets Play BlackJack!!!" << endl << endl;
         }
         else {
@@ -43,37 +43,34 @@ int main() {
             char draw_dec = 'y';
             cout << "Player " << i << "'s turn." << endl;
             do {
-                cout << "Would you like to draw a card? " << endl;
+                cout << "Would you like to draw a card? (y/n): ";
                 cin >> draw_dec;
-                if (draw_dec == 'y' or draw_dec == 'Y') {
-                    if (i == 1 & player1_hand[0][0] == 1) {
+
+                // Input validation for 'y' or 'n'
+                if (draw_dec == 'y' || draw_dec == 'Y') {
+                    // Process card draw
+                    if (i == 1) {
                         add_card_hand(player1_hand);
-                        score_hand(player1_hand);
-                        if (player1_hand[0][0] == 0 || player1_hand[0][0] == 2) {
-                            draw_dec = 'N';
-                        }
                     }
-                    else if (i == 2 & player2_hand[0][0] == 1) {
+                    else if (i == 2) {
                         add_card_hand(player2_hand);
-                        score_hand(player2_hand);
-                        if (player2_hand[0][0] == 0 || player2_hand[0][0] == 2) {
-                            draw_dec = 'N';
-                        }
                     }
-                    else if (i == 3 & player3_hand[0][0] == 1) {
+                    else if (i == 3) {
                         add_card_hand(player3_hand);
-                        score_hand(player3_hand);
-                        if (player3_hand[0][0] == 0 || player3_hand[0][0] == 2) {
-                            draw_dec = 'N';
-                        }
                     }
-                    update_game_status (num_players, dealer_hand, player1_hand, player2_hand, player3_hand, card_suit, card);
+                    update_game_status(num_players, dealer_hand, player1_hand, player2_hand, player3_hand, card_suit, card);
+                }
+                else if (draw_dec == 'n' || draw_dec == 'N') {
+                    // Player chooses not to draw a card, update the game status
+                    update_game_status(num_players, dealer_hand, player1_hand, player2_hand, player3_hand, card_suit, card);
                 }
                 else {
-                    update_game_status (num_players, dealer_hand, player1_hand, player2_hand, player3_hand, card_suit, card);
+                    // Invalid input handling
+                    cout << "Invalid input, please enter 'y' to draw or 'n' to stop.\n";
                 }
-            } while (draw_dec == 'y');
+            } while (draw_dec != 'n' && draw_dec != 'N'); // Loop continues until player chooses 'n' or 'N'
         }
+
         add_card_hand(dealer_hand);
         score_hand(dealer_hand);
         update_game_status (num_players, dealer_hand, player1_hand, player2_hand, player3_hand, card_suit, card);
@@ -91,7 +88,7 @@ int main() {
             clear_game(dealer_hand, player1_hand, player2_hand, player3_hand, control_hand);
         }
         //system("cls");
-        system(clear);
+        system("clear");
     } while (play == 'y' || play == 'Y');
 
     cout << "Thanks for playing !!!!!";
